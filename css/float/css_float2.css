@@ -1,0 +1,38 @@
+/*css浮动布局带来塌陷问题处理*/
+.div1 {
+    height: 100px;
+    width: 100px;
+    background: blue;
+    float: left;
+}
+
+/*方式1:增加一个元素，从这里开始清除浮动*/
+/*.clearfix {*/
+    /*clear: both;*/
+/*}*/
+
+/*方式2:增加伪元素清除浮动*/
+main::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.div2 {
+    height: 10px;
+    width: 300px;
+    background: red;
+}
+
+/*原因*/
+/*此布局中div1为方块作为浮动布局，脱离了标准流*/
+/*div2作为标准流直接对接p中文字，所以div1对于p和div2都浮动*/
+/*此类问题被称作高度塌陷，即浮动影响了后续的block*/
+
+/*修改*/
+/*需要将div2不被div1的浮动影响，被称作清除浮动*/
+/*见方式一*/
+/*方式一需要新增一个元素不太合理*/
+
+/*方式二：通过伪元素的方式清除浮动*/
+/*原理即从此处开始不浮动*/

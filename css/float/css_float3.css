@@ -1,0 +1,28 @@
+/*css浮动布局中标准流的顺序*/
+.div1 {
+    background-color: red;
+    height: 100px;
+    width: 350px;
+}
+.div2 {
+    background-color: blue;
+    height: 120px;
+    width: 200px;
+    float: left;
+}
+.div3 {
+    background-color: green;
+    height: 140px;
+    width: 50px;
+    float: left;
+}
+.div4 {
+    background-color: yellow;
+    height: 100px;
+    width: 600px;
+}
+
+/*1、将div2设置成浮动布局之后会导致div2脱离标准流，将div3遮住一部分*/
+/*2、将div3设置成浮动之后，div2/3都会脱离标准流，div4上移动*/
+/*3、float只对后面的元素有效，因为html的标准流是有先后顺序的，所以div1不会有变化*/
+
