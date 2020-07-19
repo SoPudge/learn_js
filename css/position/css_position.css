@@ -1,0 +1,37 @@
+body {
+  padding: 20px;
+  font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+.container {
+  width: 500px;
+  border: 5px solid rgb(111,41,97);
+  border-radius: .5em;
+  padding: 10px;
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(111,41,97,.3);
+  position: relative;
+  position: absolute;
+  /*position: fixed;*/
+  left:900px;
+  top:20px;
+}
+
+/*position中的相对定位是相对于原来的位置，并且有了相对定位，其后方的botton才会生效*/
+/*绝对定位会使得元素脱离文档流，除非其某个祖先被设置成了静态定位，所以通过绝对定位可以直接*/
+/*指定元素相对浏览器视窗的位置*/
+
+/*固定定位相对于视窗定位，如果绝对定位没有父的定位，则和固定定位一致，可以制作成其他元素滚动*/
+/*但是定位的元素始终存在的效果，例如导航栏目*/
+
+

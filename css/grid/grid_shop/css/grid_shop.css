@@ -1,0 +1,202 @@
+
+/*主要内容*/
+.wrapper{
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+/*顶部内容 - 开始*/
+.top{
+    width: 100%;
+    background-color: #e3e4e5;
+}
+.top .header{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    grid-template-areas:
+        "begin end";
+}
+.top .header .begin a{
+    color: #999;
+    margin-right: 12px;
+}
+.top .header .end a{
+    color: #999;
+    margin-left: 12px;
+}
+.top .header .end .login{
+    color: #f46;
+}
+.top .header a:hover{
+    color: #f46;
+}
+.top .header .begin{
+    grid-area: begin;
+}
+.top .header .end{
+    grid-area: end;
+}
+/*顶部内容 - 结束*/
+
+
+/*广告横幅 - 开始*/
+.wrapper .banner{
+    height: 70px;
+    background-color: rgba(255, 105, 139, 0.64);
+}
+/*广告横幅 - 结束*/
+
+
+/*logo一行的内容 - 开始*/
+.wrapper .bar{
+    height: 87px;
+    /*background-color: #d2aeff;*/
+    display: grid;
+    grid-template-columns: 242px repeat(2,auto);
+    align-items: center;
+}
+.wrapper .bar .logo-bar{
+    width: 242px;
+    line-height: 3rem;
+}
+.wrapper .bar .logo-bar .title{
+    color: #666;
+    font-size: 20px;
+    line-height: 3rem;
+}
+.wrapper .bar .logo-bar .title i{
+    font-size: 32px;
+    color: #f46;
+    margin-right: 0.6rem;
+}
+.wrapper .bar .search-bar{
+    /*margin: 27px 30px 0 85px;*/
+}
+.wrapper .bar .search-bar .ui.input{
+    width: 420px;
+}
+.wrapper .bar .search-bar .ui.button{
+    background-color: #f46!important;
+}
+.wrapper .bar .car-bar .ui.button{
+    border: 1px solid #dfdfdf;
+    background-color: #f9f9f9;
+}
+.wrapper .bar .car-bar .ui.button .content{
+    font-weight: 400;
+}
+.wrapper .bar .car-bar .icon.shop{
+    color: #f46!important;
+}
+/*logo一行的内容 - 结束*/
+
+
+/*导航 - 开始*/
+.wrapper .navigation{
+    height: 33px;
+    margin-top: 10px;
+    /*background-color: #e5a957;*/
+    display: grid;
+    grid-template-columns: 242px auto;
+    align-items: center;
+}
+.wrapper .navigation .category-title{
+    align-self: center;
+    width: 242px;
+    background-color: #f46;
+    height: 33px;
+}
+.wrapper .navigation .category-title .title{
+    font-size: 14px;
+    color: white;
+    height: 33px;
+    line-height: 33px;
+    padding: 0 10px 0 20px;
+}
+.wrapper .navigation .nav{
+    margin-left: 10px;
+}
+.wrapper .navigation .nav .nav-link{
+    color: #333;
+}
+.wrapper .navigation .nav .nav-link:hover{
+    color: #f46!important;
+}
+/*导航 - 结束*/
+
+
+/*商品分类一行 - 开始*/
+.wrapper .splash{
+    height: 640px;
+    margin-bottom: 45px;
+    /*background-color: #e56aa5;*/
+    display: grid;
+    grid-template-columns: 242px auto;
+    grid-template-rows: 640px;
+}
+.wrapper .splash .category-menu{
+    width: 242px;
+}
+.wrapper .splash .category-menu>.ui.menu{
+    width: 100%;
+    height: 100%;
+    border: none!important;
+}
+.wrapper .splash .category-menu>.ui.vertical.menu .item>.header:not(.ui){
+    font-weight: 400!important;
+}
+.wrapper .splash .category-menu>.ui.menu>.item{
+    background-color: #ff5b79;
+    color: white;
+}
+.wrapper .splash .category-menu>.ui.menu>.item:hover{
+    background-color: #f83f61;
+}
+.wrapper .splash .category-menu>.ui.menu>.item .menu .item{
+    color: white;
+}
+.wrapper .splash .category-menu>.ui.menu>.item:before{
+    background-color: #ff7f96;
+}
+
+.wrapper .splash .ads{
+    height: 640px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 380px auto;
+}
+.wrapper .splash .ads .gallery{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-column-gap: 1px;
+}
+.wrapper .splash .ads .gallery img{
+    max-width: 100%;
+}
+/*商品分类一行 - 结束*/
+
+
+/*品牌展示 - 开始*/
+.wrapper .goods .box{
+    height: 447px;
+    /*background-color: #d5e582;*/
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-column-gap: 1px;
+}
+.wrapper .goods h3{
+    font-size: 28px;
+    font-weight: 400;
+}
+.wrapper .goods img{
+    max-width: 100%;
+}
+/*品牌展示 - 结束*/

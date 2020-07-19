@@ -1,0 +1,53 @@
+body {
+  padding: 20px;
+  font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+* {box-sizing: border-box;}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+.container {
+  width: 500px;
+  border: 5px solid rgb(111,41,97);
+  border-radius: .5em;
+  padding: 10px;
+  display: flex;
+  /*flex-direction: column;*/
+  /*flex-direction: row-reverse;*/
+}
+
+.item {
+  flex: 1 1 0;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background-color: rgba(111,41,97,.3);
+  border: 2px solid rgba(111,41,97,.5);
+}
+
+.container :first-child {
+    flex: 2 1 0;
+}
+
+/*flex布局当中，有三个选项来控制子元素在父元素当中的伸缩*/
+/*flex-grow：用于定义剩余空间的分配标准，如果某元素为1，则剩余空间分1份，有多个该属性，则把*/
+/*剩余元素按照数字平分。*/
+/*flex-shrink：用于定义超出空间的缩减标准，按照定义的数值来缩减*/
+/*flex-basis：定义元素的默认宽度，默认为auto即使用width的值，如果设置了则使用该值作为宽带*/
+
+/*flex布局一般用于一维布局，可以控制横向和纵向的伸缩和摆放位置*/
+
+/*本例当中将item的flex特性设置为1，1，0代表如下意思*/
+/*flex-grow为1，如果有剩余空间，平均分配*/
+/*flex-shrink为1，如果有多余空间，则平均吸收*/
+/*basis为0，以width宽度为准*/
+
+/*在first-child当中定义flex 2 1 0代表，第一个元素的grow为2，需分配两份多余空间*/
+/*吸收一份空间，宽度按width定义*/
+
+
