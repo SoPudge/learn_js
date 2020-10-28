@@ -21,10 +21,6 @@ next()方法每次返回自上次yield执行以来，并到本次yield语句之�
 ... return 'hello world'
 ... yield 'ok'
 ... }
-undefined
-> 
-> 
-> 
 > const x = test()
 undefined
 > x.next()
