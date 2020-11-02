@@ -13,9 +13,9 @@
 
 <body>
     <div id="app">
-        <input type="text" class='empty' v-bind:class='{empty: count}' v-model="value">
+        <input type="text" class='empty' v-bind:class='{empty:!count}' v-model="value">
         <input type="button" value="发送" v-on:click="send">
-        <div>value 的值是：{{ value }}</div>
+        <div v-if="count">value 的值是：{{ value }}</div>
         <div>字数: {{count}}</div>
     </div>
 </body>
