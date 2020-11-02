@@ -61,18 +61,26 @@
                 return {
                     todos: [],
                     newTodoTitle: '',
-                    emptyChecked: false
+                    checkEmpty: false
                 }
             },
             methods: {
-                addTodo: function(){
-                    if (this.newTodoTitle) {
-                        emptyChecked: false
+                addTodo: function () {
+                    if (this.newTodoTitle !== '') {
+                        checkEmpty = false
                         this.todos.push({id: id++, title: this.newTodoTitle})
                         this.newTodoTitle = ''
                     }else{
-                        emptyChecked: true
-                        return
+                        checkEmpty = true
+                    }
+                }
+            },
+            computed: {
+                emptyChecked: function () {
+                    if (this.newTodoTitle.length === 0 && this.checkEmpty) {
+                        return true
+                    } else {
+                        return false
                     }
                 }
             }
