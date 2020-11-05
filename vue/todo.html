@@ -41,7 +41,7 @@
                 <span>{{todo.isButtonCompleted}}</span>
                 <input type="button" value="标记完成" @click="markAsCompleted(todo)" :class="{button_status: todo.isButtonCompleted}"/>
                 <input type="button" value="标记未完成" @click="markAsCompleted(todo)" :class="{button_status: !todo.isButtonCompleted}"/>
-                <input type="button" value="删除">
+                <input type="button" value="删除" @click="deleteNode(todo)">
                 <input type="text" value="编辑 todo...">
             </li>
         </ul>
@@ -54,6 +54,7 @@
                 <input type="button" value="已完成">
                 <input type="button" value="清除已完成">
                 <input type="button" value="清除全部">
+                <input type="button" value="撤销删除" @click="undoDelete()">
             </span>
         </div>
     </div>
@@ -65,6 +66,7 @@
             data: function () {
                 return {
                     todos: [],
+                    temptodos: [],
                     newTodoTitle: '',
                     checkEmpty: false,
                 }
@@ -82,6 +84,12 @@
                 markAsCompleted: function (todo) {
                     todo.completed = !todo.completed
                     todo.isButtonCompleted = !todo.isButtonCompleted
+                },
+                deleteNode: function(todo){
+                   let temp = this.todos.splice(this.todos.indexOf(todo),1) 
+                   this.temptodos.push(temp)
+                },
+                undoDelete: function(){
                 }
             },
             computed: {
