@@ -86,10 +86,11 @@
                     todo.isButtonCompleted = !todo.isButtonCompleted
                 },
                 deleteNode: function(todo){
-                   let temp = this.todos.splice(this.todos.indexOf(todo),1) 
+                   let temp = this.todos.splice(this.todos.indexOf(todo),1)[0]
                    this.temptodos.push(temp)
                 },
                 undoDelete: function(){
+                    this.todos.push(this.temptodos.pop())
                 }
             },
             computed: {
