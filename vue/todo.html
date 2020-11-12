@@ -37,12 +37,12 @@
         <!-- todo list -->
         <ul>
             <li v-for='todo in todos' :key='todo.id'>
-                <span :class="{completed: todo.completed}">{{todo.title}}</span>
+                <span :class="{completed: todo.completed}" @dblclick="editTodo(todo)">{{todo.title}}</span>
                 <span>{{todo.isButtonCompleted}}</span>
                 <input type="button" value="标记完成" @click="markAsCompleted(todo)" :class="{button_status: todo.isButtonCompleted}"/>
                 <input type="button" value="标记未完成" @click="markAsCompleted(todo)" :class="{button_status: !todo.isButtonCompleted}"/>
                 <input type="button" value="删除" @click="deleteNode(todo)">
-                <input type="text" value="编辑 todo...">
+                <input type="text" value="编辑 todo..." v-if="editedTodo !== null && editedTodo.id === todo.id">
             </li>
         </ul>
         <!-- end todo list -->
@@ -69,6 +69,7 @@
                     temptodos: [],
                     newTodoTitle: '',
                     checkEmpty: false,
+                    editedTodo: null
                 }
             },
             methods: {
@@ -91,6 +92,9 @@
                 },
                 undoDelete: function(){
                     this.todos.push(this.temptodos.pop())
+                },
+                editTodo: function (todo) {
+                    this.editedTodo = {id: todo.id, title: todo.title}
                 }
             },
             computed: {
