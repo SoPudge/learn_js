@@ -37,12 +37,13 @@
         <!-- todo list -->
         <ul>
             <li v-for='todo in todos' :key='todo.id'>
-                <span :class="{completed: todo.completed}" @dblclick="editTodo(todo)">{{todo.title}}</span>
+                <span :class="{completed: todo.completed}" @click="editTodo(todo)">{{todo.title}}</span>
                 <span>{{todo.isButtonCompleted}}</span>
                 <input type="button" value="标记完成" @click="markAsCompleted(todo)" :class="{button_status: todo.isButtonCompleted}"/>
                 <input type="button" value="标记未完成" @click="markAsCompleted(todo)" :class="{button_status: !todo.isButtonCompleted}"/>
                 <input type="button" value="删除" @click="deleteNode(todo)">
-                <input type="text" value="编辑 todo..." v-if="editedTodo !== null && editedTodo.id === todo.id">
+                <input type="text" value="编辑 todo..." v-if="editedTodo !== null && editedTodo.id === todo.id" v-model="todo.title"
+                    @keyup.enter="editDone(todo)" @keyup.esc="cancelEdit(todo)">
             </li>
         </ul>
         <!-- end todo list -->
@@ -95,6 +96,16 @@
                 },
                 editTodo: function (todo) {
                     this.editedTodo = {id: todo.id, title: todo.title}
+                },
+                editDone: function(todo){
+                    this.editedTodo = null
+                    if (todo.title === ''){
+                        this.deleteNode(todo)
+                    }
+                },
+                cancelEdit: function(todo){
+                    todo.title = this.editedTodo.title
+                    this.editedTodo = null
                 }
             },
             computed: {
