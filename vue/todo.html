@@ -38,7 +38,7 @@
         <ul>
             <li v-for='todo in todos' :key='todo.id'>
                 <span :class="{completed: todo.completed}" @click="editTodo(todo)">{{todo.title}}</span>
-                <span>{{todo.isButtonCompleted}}</span>
+                <!--<span>{{todo.isButtonCompleted}}</span>-->
                 <input type="button" value="标记完成" @click="markAsCompleted(todo)" :class="{button_status: todo.isButtonCompleted}"/>
                 <input type="button" value="标记未完成" @click="markAsCompleted(todo)" :class="{button_status: !todo.isButtonCompleted}"/>
                 <input type="button" value="删除" @click="deleteNode(todo)">
@@ -48,7 +48,7 @@
         </ul>
         <!-- end todo list -->
         <div>
-            <span>剩余 3 项未完成 ---</span>
+            <span>剩余 {{leftTodos}} 项未完成 ---</span>
             <span>筛选：
                 <input type="button" class="selected" value="全部">
                 <input type="button" value="进行中">
@@ -116,6 +116,9 @@
             computed: {
                 emptyChecked: function () {
                     return this.newTodoTitle.length === 0 && this.checkEmpty
+                },
+                leftTodos: function () {
+                    return this.todos.filter(todo=>!todo.completed).length
                 }
             },
             directives:{
