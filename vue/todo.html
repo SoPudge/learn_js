@@ -26,7 +26,7 @@
 <body>
     <div id="todo-app">
         <div>
-            <input type="button" value="全部标为完成" />
+            <input type="button" value="全部标为完成" @click="markAllAsCompleted" />
             <input type="text" 
                    placeholder="添加 todo"
                    v-model="newTodoTitle"
@@ -42,7 +42,7 @@
                 <input type="button" value="标记完成" @click="markAsCompleted(todo)" :class="{button_status: todo.isButtonCompleted}"/>
                 <input type="button" value="标记未完成" @click="markAsCompleted(todo)" :class="{button_status: !todo.isButtonCompleted}"/>
                 <input type="button" value="删除" @click="deleteNode(todo)">
-                <input type="text" value="编辑 todo..." v-if="editedTodo !== null && editedTodo.id === todo.id" v-model="todo.title"
+                <input type="text" value="编辑 todo..." v-focus="true" v-if="editedTodo !== null && editedTodo.id === todo.id" v-model="todo.title"
                     @keyup.enter="editDone(todo)" @keyup.esc="cancelEdit(todo)">
             </li>
         </ul>
@@ -106,11 +106,23 @@
                 cancelEdit: function(todo){
                     todo.title = this.editedTodo.title
                     this.editedTodo = null
+                },
+                markAllAsCompleted: function(){
+                    this.todos.map(function(todo){
+                        todo.completed = !todo.completed
+                    })
                 }
             },
             computed: {
                 emptyChecked: function () {
                     return this.newTodoTitle.length === 0 && this.checkEmpty
+                }
+            },
+            directives:{
+                focus:{
+                    inserted: function(el){
+                        el.focus()
+                    }
                 }
             }
         })
