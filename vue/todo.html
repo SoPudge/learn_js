@@ -12,8 +12,7 @@
         .selected {
             color: red;
         }
-
-        .empty {
+.empty {
             border-color: red;
         }
 
@@ -53,8 +52,8 @@
                 <input type="button" :class="{selected: intention === 'all'}" value="全部" @click="intention='all'">
                 <input type="button" :class="{selected: intention === 'ongoing'}" value="进行中" @click="intention='ongoing'">
                 <input type="button" :class="{selected: intention === 'completed'}" value="已完成" @click="intention='completed'">
-                <input type="button" value="清除已完成">
-                <input type="button" value="清除全部">
+                <input type="button" value="清除已完成" @click="removeCompleted()">
+                <input type="button" value="清除全部" @click="removeAll()">
                 <input type="button" value="撤销删除" @click="undoDelete()">
             </span>
         </div>
@@ -113,6 +112,12 @@
                     this.todos.map(function(todo){
                         todo.completed = !todo.completed
                     })
+                },
+                removeCompleted: function(){
+                    this.todos = this.todos.filter(todo=>!todo.completed)
+                },
+                removeAll: function(){
+                    this.todos = []
                 }
             },
             computed: {
