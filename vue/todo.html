@@ -25,7 +25,7 @@
 <body>
     <div id="todo-app">
         <div>
-            <input type="button" value="全部标为完成" @click="markAllAsCompleted" />
+            <input type="button" value="全部标为完成" @click="markAllAsCompleted" v-if="todos.length !== 0" />
             <input type="text" 
                    placeholder="添加 todo"
                    v-model="newTodoTitle"
@@ -48,7 +48,7 @@
         <!-- end todo list -->
         <div>
             <span>剩余 {{leftTodos}} 项未完成 ---</span>
-            <span>筛选：
+            <span v-if="todos.length !== 0">筛选：
                 <input type="button" :class="{selected: intention === 'all'}" value="全部" @click="intention='all'">
                 <input type="button" :class="{selected: intention === 'ongoing'}" value="进行中" @click="intention='ongoing'">
                 <input type="button" :class="{selected: intention === 'completed'}" value="已完成" @click="intention='completed'">
