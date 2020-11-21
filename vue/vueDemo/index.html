@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js.vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{a}}
+            <li>home</li>
+        </div>
+        
+        <script type="text/javascript">
+            var data = {a:1}
+            var app = new Vue({
+                el: '#app',
+                data: data
+            })
+            
+            //app.$data === data
+            //app.$el === document.getElementById('#app')
+            app.$watch('a',function(newVal,oldVal){
+                console.log(newVal,oldVal)
+            })
+
+                app.$data.a = "test9"
+
+            //生命周期函数
+            beforeCreated: function(){}
+        </script>
+    </body>
+</html>

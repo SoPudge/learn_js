@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                <h2>声明式渲染</h2>
+                <span>message: {{message}}</span>
+                <span v-bind:title="message" style="display: block;">标悬停绑定message信息</span>
+            </div>
+            <div>
+                <h2>条件与循环</h2>
+                <p v-if="seen">决定是否能看见</p>
+                <ol>
+                    <li v-for="todo in todos">
+                        {{todo.text}}
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <h2>处理用户输入</h2>
+                <p>{{message}}</p>
+                <button v-on:click="reverseMessage">反转消息</button>
+                <input v-model="message" style="display: block;">
+            </div>
+        </div>
+    </body>
+    <script charset="utf-8">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vu2',
+                seen: true,
+                todos:[
+                    {text: "学习javascript"},
+                    {text: "学习vue"},
+                    {text: "学习element-ui"}
+                ]
+            },
+            methods:{
+                reverseMessage: function(){
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</html>
