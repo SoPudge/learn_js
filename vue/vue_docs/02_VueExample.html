@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>02_VueExample</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            console.log(vm.$data === data)
+            <h1 id='h1'>{{a}}</h1>
+        </div>
+        <script charset="utf-8">
+            var data = {a: 1}
+            var vm = new Vue({
+                el:"#app",
+                data: data,
+                //生命周期函数
+                beforeCreate: function(){
+                    console.group('beforeCreate')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+                created: function(){
+                    console.group('Created')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+                beforeMount: function(){
+                    console.group('BeforeMount')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                    console.log('old a: ' + document.getElementById('h1').innerHTMl)
+                },
+                mounted: function(){
+                    console.group('mounted')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+                beforeUpdate: function(){
+                    console.group('BeforeUpdate')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+                updated: function(){
+                    console.group('updated')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+                beforeDestroy: function(){
+                    console.group('BeforeDestroy')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+                destroyed: function(){
+                    console.group('destroyed')
+                    console.log('el:     ' + this.$el)
+                    console.log('data:   ' + this.$data)
+                    console.log('a:      ' + this.a)
+                },
+            })
+            console.group('演示watch方法')
+            vm.$watch('a',function(newVal,oldVal){
+                console.log(newVal)
+                console.log(oldVal)
+            })
+            data.a = 9
+
+        </script>
+    </body>
+</html>

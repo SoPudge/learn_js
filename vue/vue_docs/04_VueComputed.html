@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>04_计算属性和侦听器</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{message}} 
+            <br></br>
+            {{message.split('').reverse().join('')}}
+            <br></br>
+            {{reverseMessage}}
+            <br></br>
+            {{reverseMessage2()}}
+            <br></br>
+            {{now}}
+            <br></br>
+            {{now2()}}
+            <br></br>
+            {{fullName}} 
+        </div>
+    </body>
+    <script charset="utf-8">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: "today's weather good",
+                firstName: 'zhongqi',
+                lastName: 'ZHANG'
+            },
+            methods: {
+                reverseMessage2: function(){
+                    return this.message.split('').reverse().join('')
+                },
+                now2: function(){
+                    return Date.now()
+                }
+            },
+            computed: {
+                reverseMessage: function(){
+                    return this.message.split('').reverse().join('')
+                },
+                now: function(){
+                    return Date.now()
+                },
+                fullName: {
+                    get: function(){
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set: function(newVal){
+                        var names = newVal.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[names.length-1]
+                    }
+                }
+            }
+        })
+    </script>
+</html>
