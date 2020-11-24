@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>05_Class与Style绑定</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style type="text/css" media="screen">
+            .active 
+            {
+                color:red; 
+            }    
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div class="static" v-bind:class="{active:isActive,'text-danger':hasError}">这里查看绑定内容</div>
+            <div v-bind:class="classObject">这里查看绑定内容</div>
+            <div v-bind:class="classObject2">这里查看绑定内容</div>
+            <div v-bind:class="[{active:isActive},errorClass]">这里查看绑定内容</div>
+        </div>
+        <div id="app2">
+            <div v-bind:style="{color: activeColor, fontSize: fontSize + 'px'}">这里是app2</div> 
+            <div v-bind:style="styleObject">这里是app2</div> 
+        </div>
+    </body>
+    <script charset="utf-8">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: false,
+                errorClass: 'text-danger',
+                classObject: {
+                    isActive2:true,
+                    hasError2:true,
+                },
+            },
+            computed: {
+                classObject2: function(){
+                    return {
+                        active: this.isActive && this.classObject.isActive2,
+                        error: this.hasError || this.classObject.hasError2,
+                    }
+                },
+            }
+        })
+        
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                activeColor: 'red',
+                fontSize :30,
+                styleObject: {
+                    color: 'red',
+                    fontSize : '13px',
+                },
+            }
+
+        })
+    </script>
+</html>
