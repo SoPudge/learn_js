@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="component-demo">
+           <button-counter></button-counter> 
+           <button-counter></button-counter> 
+           <button-counter></button-counter> 
+           <br>
+           <blog-post title="My journey with me"></blog-post>
+           <blog-post title="My journey with me2"></blog-post>
+           <blog-post title="My journey with me3"></blog-post>
+        </div>
+
+        <div id="blog-post-demo">
+            <blog-post v-for="post in posts" :key="post.id" :title="post.title"></blog-post> 
+        </div>
+
+        <div id="blog-post-events-demo">
+            <div :style="{fontSize: postFontSize + 'em'}">
+                <blog-post2 v-for ="post in posts" :key="post.id" :post="post" @enlarge-text="postFontSize += $event"></blog-post2>
+            </div>
+        </div>
+
+    </body>
+    <script charset="utf-8">
+        Vue.component('button-counter',{
+            data: function(){
+                return {
+                    count: 0,
+                }
+            },
+            template:'<button v-on:click="count++">You clicked me {{count}} times. </button>'
+        })
+
+        Vue.component('blog-post',{
+            props: ['title'],
+            template: '<h3>{{title}}</h3>'
+        })
+
+        Vue.component('blog-post2',{
+            props: ['post'],
+            template: `
+                <div class="blog-post2">
+                   <h3>{{post.title}}</h3> 
+                   <button @click="$emit('enlarge-text',0.1)">
+                        Enlarge text
+                   </button>
+                   <div v-html="post.content"></div>
+                </div>
+            `
+        })
+
+        new Vue({el: '#component-demo'})
+
+        new Vue({
+            el : "#blog-post-demo",
+            data: {
+                posts: [
+                    {id:1,title:'my journey with me'},
+                    {id:2,title:'my journey with me'},
+                    {id:3,title:'my journey with me'},
+                ],
+            },
+        })
+
+        new Vue({
+            el : "#blog-post-events-demo",
+            data: {
+                posts: [
+                    {id:1,title:'my journey with me'},
+                    {id:2,title:'my journey with me'},
+                    {id:3,title:'my journey with me'},
+                ],
+                postFontSize : 1,
+            },
+        })
+
+    </script>
+</html>
