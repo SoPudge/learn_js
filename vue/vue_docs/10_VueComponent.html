@@ -27,6 +27,13 @@
             </div>
         </div>
 
+        <div id="input-example">
+            <input2 v-model="message"></input2>
+            <p>{{message}}</p>
+
+            <alert-box>something bad happend</alert-box>
+        </div>
+
     </body>
     <script charset="utf-8">
         Vue.component('button-counter',{
@@ -56,6 +63,22 @@
             `
         })
 
+        Vue.component('input2', {
+            props: ['value'],
+            template: `
+                <input :value="value" @input="$emit('input', $event.target.value)">
+            `
+        })
+
+        Vue.component('alert-box', {
+            template:`
+                <<div class="demo-alert-box">
+                    <strong>Error!</strong>
+                    <slot></slot>
+                </div>>
+            `
+        })
+
         new Vue({el: '#component-demo'})
 
         new Vue({
@@ -78,6 +101,13 @@
                     {id:3,title:'my journey with me'},
                 ],
                 postFontSize : 1,
+            },
+        })
+
+        new Vue({
+            el: "#input-example",
+            data: {
+                message: '',
             },
         })
 
