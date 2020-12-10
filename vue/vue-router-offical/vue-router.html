@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Vue_Router_Sample</title> <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Hello App!</h1>
+            <p>
+            <!--<router-link to="/foo">Go to Foo</router-link>-->
+            <!--<router-link to="/bar">Go to Bar</router-link>-->
+            <router-link to="/user/foo">Go to user foo</router-link>
+            <router-link to="/user/bar">Go to user bar</router-link>
+            <router-link to="/user/foo/post/32">Go to user bar</router-link>
+            <router-link to="/user/bar/post/54">Go to user bar</router-link>
+            <router-link to="/xxxxxx">This is a error button</router-link>
+            </p>
+            <router-view></router-view>
+        </div>
+
+    </body>
+    <script charset="utf-8">
+        const User = {
+            template: '<div>User {{ $route.params.id }} && {{$route.params.post_id}}</div>',
+            watch: {
+                $route(to, from){
+                    console.log('change')
+                }
+            }
+        }
+
+        const Error = {
+            template: '<div>show $route.params like this {{$route.params.pathMatch}}</div>',
+        }
+
+        const routes = [
+            {path: '/user/:id', component: User},
+            {path: '/user/:id/post/:post_id', component: User},
+            {path: '*', component: Error},
+        ]
+
+        const router = new VueRouter({
+            routes
+        })
+
+        const app = new Vue({router}).$mount('#app')
+
+    </script>
+</html>
