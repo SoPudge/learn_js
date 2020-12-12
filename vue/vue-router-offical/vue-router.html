@@ -17,6 +17,9 @@
             <router-link to="/user/foo/post/32">Go to user bar</router-link>
             <router-link to="/user/bar/post/54">Go to user bar</router-link>
             <router-link to="/xxxxxx">This is a error button</router-link>
+            <router-link :to="{name:'user',params:{id:123}}">This is a name router button</router-link>
+            <router-link to="/user/child/profile">This is a user child's profile</router-link>
+            <router-link to="/user/child/posts">This is a user child's posts</router-link>
             </p>
             <router-view></router-view>
         </div>
@@ -24,7 +27,12 @@
     </body>
     <script charset="utf-8">
         const User = {
-            template: '<div>User {{ $route.params.id }} && {{$route.params.post_id}}</div>',
+            template: `
+            <div>User {{ $route.params.id }} && {{$route.params.post_id}}
+            <h2>child router content</h2>
+            <router-view></router-view>
+            </div>
+            `,
             watch: {
                 $route(to, from){
                     console.log('change')
@@ -36,10 +44,29 @@
             template: '<div>show $route.params like this {{$route.params.pathMatch}}</div>',
         }
 
+        const UserProfile = {
+            template:'<div>this is userprofile</div>'
+        }
+
+        const UserPosts = {
+            template:'<div>this is userposts</div>'
+        }
+
         const routes = [
-            {path: '/user/:id', component: User},
+            {path: '/user/:id',name:'user', component: User,
+            children:[
+                {
+                    path: 'profile',
+                    component:UserProfile
+                },
+                {
+                    path:'posts',
+                    component: UserPosts
+                },
+            ]
+            },
             {path: '/user/:id/post/:post_id', component: User},
-            {path: '*', component: Error},
+            {path: '*',name:'all', component: Error},
         ]
 
         const router = new VueRouter({
