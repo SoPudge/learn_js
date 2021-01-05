@@ -1,0 +1,10 @@
+{
+  "usingComponents": {},
+  "tabBar": {
+    "list": [
+      { "text": "Tab1", "pagePath": "pageA" },
+      { "text": "Tab1", "pagePath": "pageF" },
+      { "text": "Tab1", "pagePath": "pageG" }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/deal/deal",
+    "index/index",
+    "pages/use_meat/use_meat",
+    "pages/account/account"
+  ],
+  "tabBar": {
+    "color": "#464a56",
+    "selectedColor": "#6595e9",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/deal/deal",
+        "text": "报餐"
+      },
+      {
+        "pagePath": "pages/use_meat/use_meat",
+        "text": "用餐"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "账户"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
