@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/deal/deal",
-    "index/index",
     "pages/use_meat/use_meat",
-    "pages/account/account"
+    "pages/account/account",
+    "index/index"
   ],
   "tabBar": {
     "color": "#464a56",
