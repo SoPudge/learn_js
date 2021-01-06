@@ -5,7 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
+    background: {'url':'demo-text-1', 
+    'url':'demo-text-2', 
+    'url':'demo-text-3'},
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500
+  },
+  changeIndicatorDots() {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
 
+  changeAutoplay() {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+
+  intervalChange(e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+
+  durationChange(e) {
+    this.setData({
+      duration: e.detail.value
+    })
   },
 
   /**
@@ -60,7 +90,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage() {
+    return {
+      title: '点击报餐',
+      path: 'page/deal/deal'
+    }
   }
 })
