@@ -1,27 +1,19 @@
 <!--pages/deal.wxml-->
 <view class="container">
-  <view class="page-body">
-    <view class="swiper">
-      <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" style='height:{{height*2 +80}}rpx;width:95%;'>
-        <block wx:for="{{background}}" wx:key="*this">
-          <swiper-item>
-            <image src="{{item}}"></image>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-    <view class="book-button">
-      <button class='button-item' plain="true">用户报餐</button>
-      <button class='button-item' plain="true">临时报餐</button>
-    </view>
-    <view class="qr-code">
-      <image
-        src="https://qr.api.cli.im/newqr/create?data=%7B%27name%27%3A%27SoPudge%27%2C%27date%27%3A%272020%2F1%2F7%27%2C%27type%27%3A%27launch%27%2C%27used%27%3A%27false%27%7D&level=H&transparent=0&bgcolor=%23ffffff&forecolor=%23595959&blockpixel=12&marginblock=2&logourl=&size=400&logoshape=ellipse&embed_text=%E7%94%A8%E9%A4%90%E7%A0%81&embed_text_color=%23000000&embed_text_size=46&embed_text_fontfamily=simhei.ttc&foretype=1&gradient_way=vertical&forecolor2=%2334343A&eye_use_fore=0&background=%2F%2Fstatic.clewm.net%2Fcli%2Fimages%2Fbackground%2F29.png&qrcode_eyes=pin-3.png&outcolor=%23666666&incolor=%23306CF6&body_type=8&water_ratio=1&qr_rotate=0&text=&fontfamily=simhei.ttc&fontsize=46&logo_pos=0&kid=bizcliim&time=1609984780&key=84e17a6263419f3a1e5020e98e2df6a1"
-        mode="aspectFit"></image>
-    </view>
-    <view class="qr-code-tip">本用餐码仅供{{today}}使用</view>
+  <view class="header">
+    <image src="/images/header.png" mode="widthFix" style="border:1px solid black;width:400px;"></image>
   </view>
-  <view class="page-foot">
-    <view class="test">Copy Right</view>
+  <view class="content">
+    <view class="qrcode">
+      <image src="/images/qrcode.png" style="width:354rpx;height:354rpx;"></image>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="button-group"></view>
+    <view class="line"></view>
+    <view class="button-group"></view>
+  </view>
+  <view class="copyright">
+    <text>武汉佛吉亚通达排气系统有限公司主办</text>
   </view>
 </view>

@@ -1,6 +1,6 @@
 /* pages/deal.wxss */
 page {
-    background: #dddddd;
+    background: white;
     height: 100%;
 }
 .container {
@@ -9,35 +9,33 @@ page {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border:1px solid black;
-}
-.page-body {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
     border: 1px solid yellow;
 }
-.swiper {
-    background: white;
-    width: 100%;
+.header {
     border: 1px solid black;
-    border-radius: 5px;
-}
-.book-button {
-    display: flex;
     width: 100%;
-    flex-direction: row;
-    border: 1px solid black;
-    background: white;
-    border-radius: 5px;
 }
-.page-foot {
-    border:1px solid black;
-    width: 100%;
+.content {
+    border: 1px solid yellow;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    width: 650rpx;
+    height: 357rpx;
+    border-radius: 20rpx;
+    box-shadow: -2rpx -2rpx 30rpx #c6c6c6;
+    background-color: white;
+}
+.footer {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.copyright {
+    color: #c6c6c6;
+    margin-bottom: 20rpx;
 }
