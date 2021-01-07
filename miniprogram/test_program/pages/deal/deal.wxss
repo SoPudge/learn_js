@@ -1,1 +1,43 @@
 /* pages/deal.wxss */
+page {
+    background: #dddddd;
+    height: 100%;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border:1px solid black;
+}
+.page-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid yellow;
+}
+.swiper {
+    background: white;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.book-button {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    border: 1px solid black;
+    background: white;
+    border-radius: 5px;
+}
+.page-foot {
+    border:1px solid black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

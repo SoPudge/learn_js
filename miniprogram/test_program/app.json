@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/deal/deal",
-    "pages/use_meat/use_meat",
     "pages/account/account",
     "index/index"
   ],
@@ -13,10 +12,6 @@
     "list": [
       {
         "pagePath": "pages/deal/deal",
-        "text": "报餐"
-      },
-      {
-        "pagePath": "pages/use_meat/use_meat",
         "text": "用餐"
       },
       {

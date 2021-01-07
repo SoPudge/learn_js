@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    background: {'url':'demo-text-1', 
-    'url':'demo-text-2', 
-    'url':'demo-text-3'},
+    background: ['http://img.daimg.com/uploads/allimg/180527/3-1P52G52U5.jpg',
+    'http://img.daimg.com/uploads/allimg/171220/3-1G220141A7.jpg',
+    'http://img.daimg.com/uploads/allimg/171219/3-1G219235543.jpg'],
     indicatorDots: true,
     vertical: false,
     autoplay: false,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    today: "2020/1/7"
   },
   changeIndicatorDots() {
     this.setData({

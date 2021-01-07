@@ -1,45 +1,27 @@
 <!--pages/deal.wxml-->
-<text>pages/deal/deal.wxml</text>
 <view class="container">
   <view class="page-body">
-    <view class="page-section page-section-spacing swiper">
-      <swiper indicator-dots="{{indicatorDots}}"
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <view class="swiper">
+      <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" style='height:{{height*2 +80}}rpx;width:95%;'>
         <block wx:for="{{background}}" wx:key="*this">
           <swiper-item>
-            <view class="swiper-item {{item.url}}"></view>
+            <image src="{{item}}"></image>
           </swiper-item>
         </block>
       </swiper>
     </view>
-    <view class="page-section" style="margin-top: 40rpx;margin-bottom: 0;">
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_switch">
-          <view class="weui-cell__bd">指示点</view>
-          <view class="weui-cell__ft">
-            <switch checked="{{indicatorDots}}" bindchange="changeIndicatorDots" />
-          </view>
-        </view>
-        <view class="weui-cell weui-cell_switch">
-          <view class="weui-cell__bd">自动播放</view>
-          <view class="weui-cell__ft">
-            <switch checked="{{autoplay}}" bindchange="changeAutoplay" />
-          </view>
-        </view>
-      </view>
+    <view class="book-button">
+      <button class='button-item' plain="true">用户报餐</button>
+      <button class='button-item' plain="true">临时报餐</button>
     </view>
-
-    <view class="page-section page-section-spacing">
-      <view class="page-section-title">
-        <text>幻灯片切换时长(ms)</text>
-        <text class="info">{{duration}}</text>
-      </view>
-      <slider bindchange="durationChange" value="{{duration}}" min="500" max="2000"/>
-      <view class="page-section-title">
-        <text>自动播放间隔时长(ms)</text>
-        <text class="info">{{interval}}</text>
-      </view>
-      <slider bindchange="intervalChange" value="{{interval}}" min="2000" max="10000"/>
+    <view class="qr-code">
+      <image
+        src="https://qr.api.cli.im/newqr/create?data=%7B%27name%27%3A%27SoPudge%27%2C%27date%27%3A%272020%2F1%2F7%27%2C%27type%27%3A%27launch%27%2C%27used%27%3A%27false%27%7D&level=H&transparent=0&bgcolor=%23ffffff&forecolor=%23595959&blockpixel=12&marginblock=2&logourl=&size=400&logoshape=ellipse&embed_text=%E7%94%A8%E9%A4%90%E7%A0%81&embed_text_color=%23000000&embed_text_size=46&embed_text_fontfamily=simhei.ttc&foretype=1&gradient_way=vertical&forecolor2=%2334343A&eye_use_fore=0&background=%2F%2Fstatic.clewm.net%2Fcli%2Fimages%2Fbackground%2F29.png&qrcode_eyes=pin-3.png&outcolor=%23666666&incolor=%23306CF6&body_type=8&water_ratio=1&qr_rotate=0&text=&fontfamily=simhei.ttc&fontsize=46&logo_pos=0&kid=bizcliim&time=1609984780&key=84e17a6263419f3a1e5020e98e2df6a1"
+        mode="aspectFit"></image>
     </view>
+    <view class="qr-code-tip">本用餐码仅供{{today}}使用</view>
+  </view>
+  <view class="page-foot">
+    <view class="test">Copy Right</view>
   </view>
 </view>
