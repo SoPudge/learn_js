@@ -10,12 +10,12 @@
   </view>
   <view class="footer">
     <view class="button-group1">
-      <image src="/images/bowl-one.png" mode="widthFix" style="width:95rpx;"></image>
+      <cover-image src="/images/bowl-one.png"  bindtap="navigate_temp_apply" mode="widthFix" style="width:95rpx;"></cover-image>
       <text>临时就餐</text>
     </view>
     <view class="line"></view>
     <view class="button-group2">
-      <image src="/images/excel.png" mode="widthFix" style="width:95rpx;"></image>
+      <cover-image src="/images/excel.png" bindtap="navigate_record" mode="widthFix" style="width:95rpx;"></cover-image>
       <text>就餐记录</text>
     </view>
   </view>

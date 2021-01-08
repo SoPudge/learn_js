@@ -46,8 +46,10 @@ page {
     align-items: center;
     margin-right: 50rpx;
 }
-text {
+.footer text {
     margin-top: 15rpx;
+    color: #999999;
+    font-weight: 500;
 }
 .line {
     background: #E0E3DA;

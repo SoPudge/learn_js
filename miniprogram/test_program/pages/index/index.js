@@ -1,41 +1,18 @@
-// pages/deal.js
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-    background: ['http://img.daimg.com/uploads/allimg/180527/3-1P52G52U5.jpg',
-    'http://img.daimg.com/uploads/allimg/171220/3-1G220141A7.jpg',
-    'http://img.daimg.com/uploads/allimg/171219/3-1G219235543.jpg'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500,
-    today: "2020/1/7"
-  },
-  changeIndicatorDots() {
-    this.setData({
-      indicatorDots: !this.data.indicatorDots
+  navigate_temp_apply: function(){
+    wx.navigateTo({
+      title: '临时就餐',
+      url: '/pages/temp_apply/temp_apply',
     })
   },
-
-  changeAutoplay() {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-
-  intervalChange(e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-
-  durationChange(e) {
-    this.setData({
-      duration: e.detail.value
+  navigate_record: function(){
+    wx.navigateTo({
+      title: '就餐记录',
+      url: '/pages/record/record',
     })
   },
 

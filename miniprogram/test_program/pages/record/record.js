@@ -1,4 +1,3 @@
-// pages/account/account.js
 Page({
 
   /**

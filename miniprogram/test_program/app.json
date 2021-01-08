@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/deal/deal",
-    "pages/account/account",
-    "index/index"
+    "pages/index/index",
+    "pages/record/record",
+    "pages/temp_apply/temp_apply"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,4 +1,3 @@
-// pages/use_meat.js
 Page({
 
   /**
