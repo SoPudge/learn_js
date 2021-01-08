@@ -1,17 +1,23 @@
 <!--pages/deal.wxml-->
 <view class="container">
   <view class="header">
-    <image src="/images/header.png" mode="widthFix" style="border:1px solid black;width:400px;"></image>
+    <image src="/images/header.png" mode="widthFix" style="width:100%;"></image>
   </view>
   <view class="content">
     <view class="qrcode">
-      <image src="/images/qrcode.png" style="width:354rpx;height:354rpx;"></image>
+      <image src="/images/qrcode.png" mode="aspectFit" style="width:354rpx;"></image>
     </view>
   </view>
   <view class="footer">
-    <view class="button-group"></view>
+    <view class="button-group1">
+      <image src="/images/bowl-one.png" mode="widthFix" style="width:95rpx;"></image>
+      <text>临时就餐</text>
+    </view>
     <view class="line"></view>
-    <view class="button-group"></view>
+    <view class="button-group2">
+      <image src="/images/excel.png" mode="widthFix" style="width:95rpx;"></image>
+      <text>就餐记录</text>
+    </view>
   </view>
   <view class="copyright">
     <text>武汉佛吉亚通达排气系统有限公司主办</text>
