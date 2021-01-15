@@ -1,0 +1,38 @@
+<view class="container">
+    <view class="page-head">
+        <view class="avatar"></view>
+        <view class="user-realname"></view>
+        <view class="user-mobile"></view>
+        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"
+            type="primary">微信登录</button>
+        <view wx:else>请升级微信版本</view>
+    </view>
+    <view class="page-body">
+        <view class="menu-title">
+            <view class="title-item">
+                <cover-image src="/images/log_meat.png" bindtap="navigate_meat_log" mode="widthFix" style="width:70rpx;">
+                </cover-image>
+                <text>就餐记录</text>
+            </view>
+            <view class="title-item">
+                <cover-image src="/images/log.png" bindtap="navigate_temp_log" mode="widthFix" style="width:70rpx;">
+                </cover-image>
+                <text>临时记录</text>
+            </view>
+        </view>
+        <mp-cells title="食堂管理员菜单" ext-class="menu-items">
+            <mp-cell link hover url="record/record" value="扫描用餐码" footer="">
+                <image slot="icon" src="/images/scan.png"
+                    style="margin-right: 16px;vertical-align: left;width:20px; height: 20px;"></image>
+            </mp-cell>
+            <mp-cell link hover url="../index" value="扫码异常录入" footer="">
+                <image slot="icon" src="/images/input.png"
+                    style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </mp-cell>
+            <mp-cell link hover url="../index" value="当日用餐记录" footer="">
+                <image slot="icon" src="/images/alllog.png"
+                    style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </mp-cell>
+        </mp-cells>
+    </view>
+</view>

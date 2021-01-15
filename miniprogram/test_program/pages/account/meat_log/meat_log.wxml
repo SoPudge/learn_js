@@ -1,0 +1,7 @@
+<view class="container">
+    <view wx:for="{{array}}" wx:key="date_id">
+        <mp-cells ext-class="cell">
+            <mp-cell icon="/images/success.png" value="2020.1.20 打卡成功"></mp-cell>
+        </mp-cells>
+    </view>
+</view>

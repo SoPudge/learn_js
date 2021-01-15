@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/record/record",
-    "pages/temp_apply/temp_apply"
+    "pages/account/account",
+    "pages/temp_apply/temp_apply",
+    "pages/account/meat_log/meat_log",
+    "pages/account/temp_log/temp_log"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -11,5 +13,9 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib":
+ {
+    "weui": true
+  }
 }

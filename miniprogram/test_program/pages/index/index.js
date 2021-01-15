@@ -12,7 +12,7 @@ Page({
   navigate_record: function(){
     wx.navigateTo({
       title: '就餐记录',
-      url: '/pages/record/record',
+      url: '/pages/account/account',
     })
   },
 
