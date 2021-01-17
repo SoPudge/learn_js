@@ -34,16 +34,30 @@ Page({
       //用户按了拒绝按钮
     }
   },
-  navigate_meat_log: function(){
+  navToMeatLog: function(){
     wx.navigateTo({
       title: '就餐记录',
       url: '/pages/account/meat_log/meat_log',
     })
   },
-  navigate_temp_log: function(){
+  navToTempLog: function(){
     wx.navigateTo({
       title: '临时就餐记录',
       url: '/pages/account/temp_log/temp_log',
+    })
+  },
+  tapToScanCode: function(){
+    wx.scanCode({
+      onlyFromCamera: true,
+      success (res) {
+        console.log(res)
+      }
+    })    
+  },
+  navToTypeLog: function(){
+        wx.navigateTo({
+      title: '扫码异常录入',
+      url: '/pages/account/type_log/type_log',
     })
   },
   /**

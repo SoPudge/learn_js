@@ -1,2 +1,9 @@
-<!--pages/account/temp_log/temp_log.wxml-->
-<text>pages/account/temp_log/temp_log.wxml</text>
+<view class="container">
+    <view wx:for="{{array}}" wx:key="date_id">
+        <mp-cells ext-class="cells">
+            <mp-cell value="2020.1.20 临时就餐记录">
+                <image slot="icon" src="/images/success.png" style="margin-right: 16rpx;margin-top:16rpx;vertical-align: left;width:80rpx; height: 80rpx;"></image>
+            </mp-cell>
+        </mp-cells>
+    </view>
+</view>

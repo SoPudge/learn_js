@@ -5,14 +5,7 @@
     align-items: center;
     width: 100%;
 }
-.cell {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.cells {
+    width: 750rpx;
 }
-.divLine{
-    background: #E0E3DA;
-    width: 100%;
-    height: 5rpx;
-   }
+

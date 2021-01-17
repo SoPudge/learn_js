@@ -1,0 +1,23 @@
+<!--pages/account/type_log/type_log.wxml-->
+<view class="container">
+  <mp-form-page title="扫码异常录入" subtitle="用于扫描异常情况下的录入，一次提交一条记录，请输入异常用户的名字">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    </mp-form>
+    <mp-cells title="" footer="">
+                <mp-cell prop="name" title="姓名" ext-class="">
+                    <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入用户姓名"/>
+                </mp-cell>
+                <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
+                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
+                </mp-cell>
+                <mp-cell prop="date" title="日期" ext-class="">
+                    <picker data-field="date" mode="date" value="{{date}}" start="2021-01-01" end="2099-01-01" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </mp-cell>
+            </mp-cells>
+    <view slot="button">
+        <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+    </view>
+</mp-form-page>
+</view>
