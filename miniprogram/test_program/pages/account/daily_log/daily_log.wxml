@@ -1,2 +1,9 @@
 <!--pages/account/daily_log/daily_log.wxml-->
-<text>pages/account/daily_log/daily_log.wxml</text>
+<view class="container">
+    <view wx:for="{{array}}" wx:key="date_id">
+        <mp-cells ext-class="cells">
+            <mp-cell ext-class="cell" value="2020.1.20 打卡成功">
+            </mp-cell>
+        </mp-cells>
+    </view>
+</view>

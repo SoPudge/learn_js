@@ -46,6 +46,12 @@ Page({
       url: '/pages/account/temp_log/temp_log',
     })
   },
+  navToDailyLog: function(){
+    wx.navigateTo({
+      title: '当日用餐记录',
+      url: '/pages/account/daily_log/daily_log',
+    })
+  },
   tapToScanCode: function(){
     wx.scanCode({
       onlyFromCamera: true,

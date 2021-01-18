@@ -1,1 +1,11 @@
 /* pages/account/daily_log/daily_log.wxss */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.cells {
+    width: 750rpx;
+}

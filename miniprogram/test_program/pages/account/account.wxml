@@ -29,7 +29,7 @@
                 <image slot="icon" src="/images/input.png"
                     style="margin-right: 16rpx;vertical-align: middle;width:40rpx; height: 40rpx;"></image>
             </mp-cell>
-            <mp-cell link hover url="../index" value="当日用餐记录" footer="">
+            <mp-cell link hover url="../index" value="当日用餐记录" footer="" bindtap="navToDailyLog">
                 <image slot="icon" src="/images/alllog.png"
                     style="margin-right: 16rpx;vertical-align: middle;width:40rpx; height: 40rpx;"></image>
             </mp-cell>
