@@ -4,14 +4,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    openid: '123'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      openid: wx.getStorageSync('openid')
+    })
   },
 
   /**

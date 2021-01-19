@@ -1,2 +1,3 @@
 <!--pages/use_meat.wxml-->
+<view>{{openid}}</view>
 
