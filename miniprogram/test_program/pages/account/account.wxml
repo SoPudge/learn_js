@@ -3,6 +3,7 @@
         <view class="avatar">
             <image src="{{avatarImg}}"></image>
         </view>
+        <!-- 用户信息页显示判断 -->
         <view wx:if="{{isRegisted}}" class="user-realname">
             <text style="font-weight: 700;font-size: large; margin-left:-100rpx;">张仲骐</text>
             <text style="font-weight: 400;font-size: x-small;margin-left:-100rpx;">财务部</text>

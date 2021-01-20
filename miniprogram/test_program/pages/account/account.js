@@ -1,5 +1,4 @@
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -13,12 +12,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-
+    //获取localStorage当中的isRegisted和avatarImg信息以更新页面
+    if (wx.getStorageSync('isRegisted')){
+      this.setData({
+        isRegisted: true,
+        avatarImg: '/images/excel.png'
+      })
+    }else{
+      this.setData({
+        isRegisted: false,
+        avatarImg: "/images/empty_avatar.png"
+      })
+    }
   },
   bindGetUserInfo: function(e) {
-    console.log(e.detail.userInfo)
     if (e.detail.userInfo){
       console.log("用户按了允许授权按钮")
+      //用户点击了授权按钮，应当请求后台数据刷新页面，登陆，同时显示一个转圈
+      //todo
     } else {
       //用户按了拒绝按钮
     }
