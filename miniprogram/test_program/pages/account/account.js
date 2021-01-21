@@ -13,20 +13,20 @@ Page({
    */
   onLoad: function () {
     //获取localStorage当中的isRegisted和avatarImg信息以更新页面
-    if (wx.getStorageSync('isRegisted')){
+    if (wx.getStorageSync('isRegisted')) {
       this.setData({
         isRegisted: true,
         avatarImg: '/images/excel.png'
       })
-    }else{
+    } else {
       this.setData({
         isRegisted: false,
         avatarImg: "/images/empty_avatar.png"
       })
     }
   },
-  bindGetUserInfo: function(e) {
-    if (e.detail.userInfo){
+  bindGetUserInfo: function (e) {
+    if (e.detail.userInfo) {
       console.log("用户按了允许授权按钮")
       //用户点击了授权按钮，应当请求后台数据刷新页面，登陆，同时显示一个转圈
       //todo
@@ -34,34 +34,51 @@ Page({
       //用户按了拒绝按钮
     }
   },
-  navToMeatLog: function(){
+  navToMeatLog: function () {
     wx.navigateTo({
       title: '就餐记录',
       url: '/pages/account/meat_log/meat_log',
     })
   },
-  navToTempLog: function(){
+  navToTempLog: function () {
     wx.navigateTo({
       title: '临时就餐记录',
       url: '/pages/account/temp_log/temp_log',
     })
   },
-  navToDailyLog: function(){
+  navToDailyLog: function () {
     wx.navigateTo({
       title: '当日用餐记录',
       url: '/pages/account/daily_log/daily_log',
     })
   },
-  tapToScanCode: function(){
+  tapToScanCode: function () {
     wx.scanCode({
       onlyFromCamera: true,
-      success (res) {
-        console.log(res)
+      success(res) {
+        // console.log(res)
+        var d = new Date
+        var timestamp = d.getTime()
+        wx.request({
+          url: 'http://corp.65536.io:8000/wxmeat/v1/meatlog',
+          data: {
+            wx_meat_openid:wx.getStorageSync('openid'),
+            timestamp: timestamp
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/json'
+          },
+          success(res) {
+            console.log(res.data)
+            // wx.setStorageSync('openid', res.data)
+          }
+        })
       }
-    })    
+    })
   },
-  navToTypeLog: function(){
-        wx.navigateTo({
+  navToTypeLog: function () {
+    wx.navigateTo({
       title: '扫码异常录入',
       url: '/pages/account/type_log/type_log',
     })

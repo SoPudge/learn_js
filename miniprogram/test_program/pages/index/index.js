@@ -6,7 +6,8 @@ Page({
   data: {
     qrcode_width: 0,
     qrcode_height: 0,
-    qrcode_text: "{'date':'','work_no':'','openid':''}"
+    qrcode_text: "{'wx_meat_openid':'','timestamp':0}",
+    foreground: "#808080"
   },
   navigate_temp_apply: function () {
     wx.navigateTo({
@@ -25,18 +26,19 @@ Page({
     drawQrcode({
       width: this.data.qrcode_width,
       height: this.data.qrcode_height,
-      foreground:'#2E8B57',
+      // foreground:'#2E8B57',
+      foreground: '#808080',
       canvasId: 'myQrcode',
-      text: "{'date':'1611160211000','work_no':'1572','openid':'oDqVP6G9j0KCNon-jp69UPEKgiHs'}",
+      text: this.data.qrcode_text,
     })
   },
   //根据不同机型，设置二维码长宽为相关px，实际由rpx200转换而来
   convertPx: function () {
-    var rpx = 200;
+    var rpx = 250;
     var systemInfo = wx.getSystemInfoSync();
     var px = rpx / 750 * systemInfo.windowWidth;
     //设置data数据
-    console.log('set data')
+    // console.log('set data')
     this.setData({
       qrcode_width: px,
       qrcode_height: px
@@ -45,23 +47,33 @@ Page({
   //获取用户信息写入二维码
   //{'date':'','work_no':'','openid':''}
   setQrcodeText: function () {
-    var timestamp = Date.parse(new Date());
-    timestamp = timestamp / 1000;
+    var d = new Date
+    var timestamp = d.getTime()
     var openid = wx.getStorageSync('openid')
-    var work_no = wx.getStorageSync('work_no')
-    var date = timestamp
     this.setData({
-      qrcode_text: `{'date':'${timestamp}','work_no':'${work_no}','openid':'${openid}'}`
+      qrcode_text: `{'wx_meat_openid':'${openid}','timestamp':${timestamp}}`
     })
     // console.log(this.data.qrcode_text)
+  },
+  //点按二维码刷新状态
+  refreshQrcode: function () {
+    wx.request({
+      url: '',
+      data: {
+        code: res.code
+      },
+      success(res) {
+        this.draw()
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setQrcodeText()
     this.convertPx()
     this.draw()
-    this.setQrcodeText()
     // console.log(this.data.qrcode_height)
   },
 

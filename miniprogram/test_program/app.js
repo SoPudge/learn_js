@@ -10,7 +10,7 @@ App({
           if (res.code) {
             //发起网络请求
             wx.request({
-              url: 'http://corp.65536.io:8000/v1/users',
+              url: 'http://corp.65536.io:8000/wxmeat/v1/login',
               data: {
                 code: res.code
               },

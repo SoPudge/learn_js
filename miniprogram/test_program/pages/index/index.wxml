@@ -4,9 +4,9 @@
     <image src="/images/header.png" mode="widthFix" style="width:100%;"></image>
   </view>
   <view class="content">
-    <view class="qrcode" style="background-image: url('/images/qrcode_border.png')">
+    <view class="qrcode">
       <view class="canvas">
-        <view style="width: 200rpx; height: 200rpx">
+        <view style="width: 250rpx; height: 250rpx" bindtap="refreshQrcode">
           <canvas canvas-id="myQrcode"></canvas>
         </view>
       </view>
