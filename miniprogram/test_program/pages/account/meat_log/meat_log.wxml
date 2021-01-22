@@ -1,7 +1,7 @@
 <view class="container">
-    <view wx:for="{{array}}" wx:key="date_id">
+    <view wx:for="{{array}}" wx:key="index">
         <mp-cells ext-class="cells">
-            <mp-cell value="{{meatlog}}">
+            <mp-cell value="{{item}} 用餐成功">
                 <image slot="icon" src="/images/success.png" style="margin-right: 16rpx;margin-top:16rpx;vertical-align: left;width:80rpx; height: 80rpx;"></image>
             </mp-cell>
         </mp-cells>
