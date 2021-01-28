@@ -11,12 +11,14 @@ App({
             //发起网络请求
             wx.request({
               url: 'http://corp.65536.io:8000/wxmeat/v1/login',
+              method: 'POST',
               data: {
-                code: res.code
+                appI:wx.getAccountInfoSync().miniProgram.appId,
+                reqcode:res.code
               },
               success(res) {
-                //console.log(res.data)
-                wx.setStorageSync('openid', res.data)
+                console.log(res.data)
+                // wx.setStorageSync('openid', res.data)
               }
             })
           } else {
