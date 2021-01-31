@@ -13,8 +13,9 @@ App({
               url: 'http://corp.65536.io:8000/wxmeat/v1/login',
               method: 'POST',
               data: {
-                appI:wx.getAccountInfoSync().miniProgram.appId,
-                reqcode:res.code
+                appId:wx.getAccountInfoSync().miniProgram.appId,
+                reqCode:res.code,
+                timeStamp: new Date().getTime()
               },
               success(res) {
                 console.log(res.data)
