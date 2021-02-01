@@ -14,7 +14,12 @@ App({
               method: 'POST',
               data: {
                 appId:wx.getAccountInfoSync().miniProgram.appId,
+<<<<<<< HEAD
                 reqcode:res.code
+=======
+                reqCode:res.code,
+                timeStamp: new Date().getTime()
+>>>>>>> ae5a66d323b1b7678002e50cf2ea6526e83be45f
               },
               success(res) {
                 console.log(res.data)
