@@ -1,23 +1,23 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/account/account",
-    "pages/temp_apply/temp_apply",
-    "pages/account/meat_log/meat_log",
-    "pages/account/temp_log/temp_log",
-    "pages/account/type_log/type_log",
-    "pages/account/daily_log/daily_log"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json",
-  "useExtendedLib":
- {
-    "weui": true
-  }
+    "pages": [
+
+        "pages/index/index",
+        "pages/account/account",
+        "pages/temp_apply/temp_apply",
+        "pages/account/meat_log/meat_log",
+        "pages/account/temp_log/temp_log",
+        "pages/account/type_log/type_log",
+        "pages/account/daily_log/daily_log"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "useExtendedLib": {
+        "weui": true
+    }
 }

@@ -1,0 +1,11 @@
+<!--pages/register/register.wxml-->
+<!-- <text>pages/register/register.wxml</text> -->
+<view class="container">
+    <view class="content">
+        <!-- <text class="text">请输入工号</text> -->
+            <input type="inputtext">111</input>
+            <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入用户姓名"/>
+        <!-- <button type="primary">微信账号登录</button> -->
+    </view>
+    <view class="footer"><text>武汉佛吉亚通达排气系统有限公司主办</text></view>
+</view>
