@@ -31,7 +31,7 @@ page {
     justify-content: center;
     align-items: center;
     background-size: 100%;
-    background-image: url('http://corp.65536.io:8000/images/qrcode_border.png');
+    background-image: url('http://corp.65536.io:8000/images/qrcode_border-2.png');
 }
 .qrcode .canvas {
     /* margin-top: -400rpx; */

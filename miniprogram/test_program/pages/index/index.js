@@ -8,7 +8,7 @@ Page({
   data: {
     qrcode_width: 0,
     qrcode_height: 0,
-    qrcode_text: "{'wx_meat_openid':'','timestamp':0}",
+    qrcode_text: "{'deviceid':'0','timestamp':0,'temporary':1}",
     foreground: "#808080"
   },
   navigate_temp_apply: function () {
@@ -51,9 +51,9 @@ Page({
   setQrcodeText: function () {
     var d = new Date
     var timestamp = d.getTime()
-    var openid = wx.getStorageSync('openid')
+    // var openid = wx.getStorageSync('openid')
     this.setData({
-      qrcode_text: `{'wx_meat_openid':'${openid}','timestamp':${timestamp}}`
+      qrcode_text: `{"deviceid":0,"sessionId":"${wx.getStorageSync('sessionId')}","timestamp":${timestamp},"temporary":1}`
     })
     // console.log(this.data.qrcode_text)
   },

@@ -1,6 +1,5 @@
 {
     "pages": [
-
         "pages/index/index",
         "pages/account/account",
         "pages/temp_apply/temp_apply",
