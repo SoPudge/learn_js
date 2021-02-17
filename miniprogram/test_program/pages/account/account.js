@@ -1,28 +1,26 @@
+const { promisifyAll, promisify } = require('miniprogram-api-promise')
 const wxp = require('../../utils/promisify')
 const wxs = require('../../utils/api')
-
-const login = require('../../services/login')
+promisifyAll(wx, wxp)
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     //获取用户登录信息及图片显示
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    // isRegisted: false,
-    // avatarImg: "/images/empty_avatar.png"
-    isRegisted: wx.getStorageSync('isRegisted'),
-    avatarImg: wx.getStorageSync('isRegisted') ? wx.getStorageSync('avatarImg') : "/images/empty_avatar.png"
+    authStatu: false,
+    avatarImg: "/images/empty_avatar.png",
+    work_no:'',
+    cn_name:''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function () {
     //设置页面数据
-    this.setData({
-      isRegisted: wx.getStorageSync('isRegisted'),
-      avatarImg: wx.getStorageSync('isRegisted') ? wx.getStorageSync('avatarImg') : "/images/empty_avatar.png"
-    })
+    // this.setData({
+    //   avatarImg: wx.getStorageSync('sessionId') ? wx.getStorageSync('avatarImg') : "/images/empty_avatar.png"
+    // })
   },
 
   bindGetUserInfo: function (e) {
@@ -97,8 +95,17 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: async function () {
+    //获取是否授权，更新用户图标
+    let authStatu = await wxp.getSetting()
+    if (authStatu.authSetting['scope.userInfo']) {
+      let userInfo = await wxp.getUserInfo()
+      let work_no = await wxp.getStorageSync('work_no')
+      let cn_name = await wxp.getStorageSync('cn_name')
+      this.setData({ authStatu: true, avatarImg: userInfo.userInfo.avatarUrl,work_no:work_no,cn_name:cn_name})
+    } else {
+      this.setData({ authStatu: false, avatarImg: "/images/empty_avatar.png" })
+    }
   },
 
   /**

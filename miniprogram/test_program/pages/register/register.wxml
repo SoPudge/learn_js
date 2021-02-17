@@ -1,11 +1,29 @@
 <!--pages/register/register.wxml-->
 <!-- <text>pages/register/register.wxml</text> -->
+<!--pages/account/type_log/type_log.wxml-->
 <view class="container">
-    <view class="content">
-        <!-- <text class="text">请输入工号</text> -->
-            <input type="inputtext">111</input>
-            <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入用户姓名"/>
-        <!-- <button type="primary">微信账号登录</button> -->
-    </view>
-    <view class="footer"><text>武汉佛吉亚通达排气系统有限公司主办</text></view>
+    <mp-form-page title="用户注册" subtitle="请输入您的工号和姓名登陆/注册">
+        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        </mp-form>
+        <mp-cells title="" footer="">
+            <mp-cell prop="work_no" title="工号" ext-class="">
+                <input bindinput="formInputChange" data-field="work_no" class="weui-input" placeholder="请输入工号" />
+            </mp-cell>
+            <mp-cell prop="name" title="姓名" ext-class=" weui-cell_vcode">
+                <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入姓名" />
+            </mp-cell>
+        </mp-cells>
+        <view slot="button">
+            <view wx:if="{{isChecked}}">
+                <button type="primary" open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo"
+                    bindtap="submitForm">登陆/注册</button>
+            </view>
+            <view wx:else>
+                <button class="weui-btn" type="primary" bindtap="showToolTips">登陆/注册</button>
+                <view wx:for="{{errors}}">
+                    <mp-toptips msg="{{item}}" type="error" show="{{item}}"></mp-toptips>
+                </view>
+            </view>
+        </view>
+    </mp-form-page>
 </view>

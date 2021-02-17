@@ -1,6 +1,4 @@
 const drawQrcode = require("../../utils/weapp-qrcode")
-const loginCheck = require("../../services/loginCheck")
-const login = require("../../services/login")
 Page({
   /**
    * 页面的初始数据
@@ -76,7 +74,6 @@ Page({
     this.setQrcodeText()
     this.convertPx()
     this.draw()
-    loginCheck()
     // console.log(this.data.qrcode_height)
   },
 
