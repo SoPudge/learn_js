@@ -9,8 +9,12 @@
         <div id="app">
             <div>
                 <h2>声明式渲染</h2>
+                <p>V-bind: V-bind绑定用于对象的绑定，可以直接使用关键字v-bind，也可以使用语法糖“:”符号
+                V-bind的绑定是单向绑定，即date当中的值变化引起绑定值变化，但直接修改绑定值不会影响data
+                </p>
                 <span>message: {{message}}</span>
                 <span v-bind:title="message" style="display: block;">标悬停绑定message信息</span>
+                <input type="text" :value="[message, message2]">
             </div>
             <div>
                 <h2>条件与循环</h2>
@@ -34,6 +38,7 @@
             el: '#app',
             data: {
                 message: 'Hello Vu2',
+                message2: 'hello vue2',
                 seen: true,
                 todos:[
                     {text: "学习javascript"},
