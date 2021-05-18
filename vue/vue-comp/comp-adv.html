@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>Comp adv</title>
+    </head>
+    <body>
+        <div id="components-adv1">
+            <h2>一、局部注册组件</h2>
+            <blog-post1 v-for="post in posts"
+                       :key="post.id"
+                       :post="post"
+            ></blog-post>
+        </div>
+
+        <div id="components-adv2">
+            <h2>二、prop类型验证</h2>
+            <blog-post2 title="abc" :likes=123></blog-post2>
+        </div>
+    </body>
+    <script charset="utf-8">
+        let ComponentA = {
+            props: ['post'],
+            template: `
+                            <div class="blog-post1">
+                                <h3>{{post.title}}</h3>
+                                <div v-html="post.content"></div>
+                            </div>
+                        `
+        }
+
+        new Vue({
+            el: '#components-adv1',
+            components: {
+                'blog-post1': ComponentA
+            },
+            data: {
+                posts: [
+                    {id: 1, title: 'first blog',content:'content1'},
+                    {id: 2, title: 'second blog',content:'content2'},
+                    {id: 3, title: 'third blog',content:'content3'},
+                ]
+            }
+        })
+
+        let ComponentB = {
+            props: {
+                title: String,
+                likes: Number,
+                isPublished: Boolean,
+                commmentIds: Array,
+                author: Object
+            },
+            template: `
+                        <div class="blog-post2">
+                            <p>title: hi {{title}}</p>
+                            <p>likes: hi {{likes}}</p>
+                            <p>isPublished: hi {{isPublished}}</p>
+                        </div>
+                        `
+        }
+
+        new Vue({
+            el: '#components-adv2',
+            components: {
+                'blog-post2': ComponentB
+            }
+        })
+
+    </script>
+</html>

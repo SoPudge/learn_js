@@ -10,7 +10,7 @@
 
 <body>
     <div id="components-demo">
-        <h2>单个vue组件</h2>
+        <h2>一、单个vue组件</h2>
         <p>单个组件通过vue.component方法申明，拥有两个参数，第一个参数是组件名称，用于html标签，第二个参数是一个函数data，包含组件代码</p>
         <p>最后通过new Vue来使用该组件</p>
         <p>组件通过function接收参数的原因是每个函数有独立作用域，可以区分组件之间的数据</p>
@@ -20,18 +20,32 @@
     </div>
 
     <div id="components-demo2">
-        <h2>vue组件传递单个参数props</h2>
+        <h2>二、vue组件传递单个参数props</h2>
         <p>props相当于vue组件函数当中的参数，以props形式定义参数，定义的参数可从组件外部传入值，组件内部即可使用外部传入的props参数值</p>
         <blog-post title="this is first blog"></blog-post>
         <blog-post title="this is second blog"></blog-post>
     </div>
 
     <div id="components-demo3">
-        <h2>vue向组件传入props数组</h2>
+        <h2>三、vue向组件传入props数组</h2>
+        <p>传入props数组则是在组件声明时声明数组，在调用的时候使用for循环调用其中内容，实际调用也仅需要传入data当中数组，通过属性来调用</p>
         <blog-post2 v-for="post in posts" 
                     :key="post.id" 
                     :post="post"
         ></blog-post2>
+    </div>
+
+    <div id="components-demo4">
+        <h2>四、子组件事件传递</h2>
+        <p>即相当于函数方法，在子组件当中使用emit暴露方法，在父组件当中调用后会和子组件通讯达成目的</p>
+        <div :style="{ fontSize: postFontSize + 'em'}">
+            <blog-post3 v-for="post in posts"
+                        :key="post.id"
+                        :post="post"
+                        @enlarge-text="postFontSize+=0.1"
+            ></blog-post3>
+        </div>
+        </div>
     </div>
 
 </body>
@@ -74,6 +88,31 @@
                 {id: 2, title: 'second blog',content:'content2'},
                 {id: 3, title: 'third blog',content:'content3'},
             ]
+        }
+    })
+
+    //组件4
+    Vue.component('blog-post3',{
+        props: ['post'],
+        template:`
+            <div class="blog-post3">
+                <h3>{{post.title}}</h3>
+                <button @click="$emit('enlarge-text')">
+                    Enlarge text
+                </button>
+                <div v-html="post.content"></div>
+            </div>
+        `
+    })
+    new Vue({
+        el: '#components-demo4',
+        data: {
+            posts: [
+                {id: 1, title: 'first blog',content:'content1'},
+                {id: 2, title: 'second blog',content:'content2'},
+                {id: 3, title: 'third blog',content:'content3'},
+            ],
+            postFontSize: 1
         }
     })
 
