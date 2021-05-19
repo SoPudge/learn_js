@@ -17,7 +17,9 @@
 
         <div id="components-adv2">
             <h2>二、prop类型验证</h2>
-            <blog-post2 title="abc" :likes=123></blog-post2>
+            <blog-post2 title="abc" 
+                        :likes="123" 
+            ></blog-post2>
         </div>
     </body>
     <script charset="utf-8">
@@ -66,6 +68,9 @@
             el: '#components-adv2',
             components: {
                 'blog-post2': ComponentB
+            },
+            data: {
+                isPublished: true
             }
         })
 
