@@ -17,9 +17,18 @@
 
         <div id="components-adv2">
             <h2>二、prop类型验证</h2>
+            <p>字符型props可以无需使用v-bind来绑定变量</p>
             <blog-post2 title="abc" 
-                        :likes="123" 
             ></blog-post2>
+            <p>除字符型外的props变量均需要使用v-bind即冒号来绑定变量，如果传入变量出错，VUE后台会报错，前台不会报错</p>
+            <blog-post3 :likes="123" 
+            ></blog-post3>
+            <p>传入动态变量，在传入动态变量的时候所有数据流都是从父组件流向子组件的，例如本例v-model绑定data当中tof数据可以相互更新，同时用户更新v-model当中数据之后</p>
+            <p>在组件当中的props也同步更新</p>
+            <p>注意：在组件和字符串模板当中永远使用驼峰命名，在html当中则永远使用短线命名</p>
+            <input v-model="tof"/>
+            <blog-post4 :is-published="tof"
+            ></blog-post4>
         </div>
     </body>
     <script charset="utf-8">
@@ -47,19 +56,35 @@
             }
         })
 
-        let ComponentB = {
+        let ComponentString = {
             props: {
                 title: String,
-                likes: Number,
-                isPublished: Boolean,
-                commmentIds: Array,
-                author: Object
             },
             template: `
                         <div class="blog-post2">
                             <p>title: hi {{title}}</p>
-                            <p>likes: hi {{likes}}</p>
-                            <p>isPublished: hi {{isPublished}}</p>
+                        </div>
+                        `
+        }
+
+        let ComponentNumber = {
+            props: {
+                likes: Number
+            },
+            template: `
+                        <div>
+                            <p>title: hi {{likes}}</p>
+                        </div>
+                        `
+        }
+
+        let ComponentBoolean = {
+            props: {
+                isPublished: String
+            },
+            template: `
+                        <div>
+                            <p>title: hi {{isPublished}}</p>
                         </div>
                         `
         }
@@ -67,10 +92,12 @@
         new Vue({
             el: '#components-adv2',
             components: {
-                'blog-post2': ComponentB
+                'blog-post2': ComponentString,
+                'blog-post3': ComponentNumber,
+                'blog-post4': ComponentBoolean
             },
             data: {
-                isPublished: true
+                tof: "abc"
             }
         })
 
