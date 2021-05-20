@@ -12,7 +12,7 @@
             <blog-post1 v-for="post in posts"
                        :key="post.id"
                        :post="post"
-            ></blog-post>
+            ></blog-post1>
         </div>
 
         <div id="components-adv2">
@@ -29,6 +29,11 @@
             <input v-model="tof"/>
             <blog-post4 :is-published="tof"
             ></blog-post4>
+            <p>传入一个布尔值</p>
+            <blog-post5 :is-fine="false"></blog-post5>
+            <p>传入一个数组</p>
+            <blog-post6 :arr="[4,5,6]"
+            ></blog-post6>
         </div>
     </body>
     <script charset="utf-8">
@@ -78,7 +83,7 @@
                         `
         }
 
-        let ComponentBoolean = {
+        let ComponentDynamic = {
             props: {
                 isPublished: String
             },
@@ -89,12 +94,41 @@
                         `
         }
 
+        let ComponentBoolean = {
+            props: {
+                isFine: {
+                    type: Boolean,
+                    default: true
+                }
+            },
+            template: `
+                        <div>
+                            <p>title: hi {{isFine}}</p>
+                        </div>
+                        `
+        }
+
+        let ComponentArray = {
+            props: {
+                arr: {
+                    type: Array,
+                    default: [1,2,3,4,5]
+                },
+            template: `
+                        <div>
+                            <p>title: hi {{arr.join('-')}}</p>
+                        </div>
+                        `
+            },
+        }
         new Vue({
             el: '#components-adv2',
             components: {
                 'blog-post2': ComponentString,
                 'blog-post3': ComponentNumber,
-                'blog-post4': ComponentBoolean
+                'blog-post4': ComponentDynamic,
+                'blog-post5': ComponentBoolean,
+                'blog-post6': ComponentArray
             },
             data: {
                 tof: "abc"
