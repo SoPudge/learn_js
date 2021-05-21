@@ -34,6 +34,12 @@
             <p>传入一个数组</p>
             <blog-post6 :arr="[4,5,6]"
             ></blog-post6>
+            <p>传入整个对象:方法一，直接利用:posts="posts"，在组件当中props直接声明posts对象本身，template当中使用posts.xxx来使用对象的属性</p>
+            <blog-post7 :posts="posts"
+            ></blog-post7>
+            <p>传入整个对象:方法二，直接利用v-bind="posts"直接传入对象的所有属性，在组件当中props需声明posts对象的属性，template当中使用xxx来使用对象的属性</p>
+            <blog-post8 v-bind="posts"
+            ></blog-post8>
         </div>
     </body>
     <script charset="utf-8">
@@ -121,6 +127,30 @@
                         `
             },
         }
+
+        let ComponentObject = {
+            props: {
+                posts: Object
+            },
+            template: `
+                <div>
+                    <p>title: hi {{posts.author}}</p>
+                </div>
+            `
+        }
+
+        let ComponentObject2 = {
+            props: {
+                id: Number,
+                author: String
+            },
+            template: `
+                <div>
+                    <p>title: hi {{author}}</p>
+                </div>
+            `
+        }
+
         new Vue({
             el: '#components-adv2',
             components: {
@@ -128,10 +158,16 @@
                 'blog-post3': ComponentNumber,
                 'blog-post4': ComponentDynamic,
                 'blog-post5': ComponentBoolean,
-                'blog-post6': ComponentArray
+                'blog-post6': ComponentArray,
+                'blog-post7': ComponentObject,
+                'blog-post8': ComponentObject2
             },
             data: {
-                tof: "abc"
+                tof: "abc",
+                posts: {
+                    id: 1,
+                    author: 'zhang zhongqi' 
+                }
             }
         })
 
