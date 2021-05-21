@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>VUE父子组件间事件的传递</title>
+    </head>
+    <body>
+        <div id="parent">
+            <div>我是父组件，传入props参数给子组件显示 {{msg2}}</div>
+            <!--https://blog.csdn.net/qq_40713392/article/details/84900303-->
+
+        </div>
+    </body>
+    <script charset="utf-8">
+        let ComponentChild = {
+            props: ['childMsg'],
+            data: function(){
+                return {
+                    msg: '我是子组件'
+                }
+            },
+            methods: {
+                transmit: function(){
+                    console.log('子组件')
+                    this.$emit('click-msg',this.msg)
+                }
+            },
+            template: `
+                <div>
+                    <div>我是子组件</div>
+                    <div>父组件传入props参数childMsg:{{childMsg}}</div>
+                    <button @click="transmit">子组件定义按钮，点按后向父组件emit消息</button>
+                </div>
+            `
+        }
+        
+        new Vue({
+            el: '#parent',
+            data: {
+                arr: [1,2,3,4],
+                msg: '我是父组件',
+                msg2: ''
+            },
+            component: {
+                'transmit-child':ComponentChild
+            },
+            methods: {
+                exportMsg: function(childVal){
+                    console.log('父组件')
+                    this.msg2 = childVal
+                }
+            }
+        })
+    </script>
+</html>
