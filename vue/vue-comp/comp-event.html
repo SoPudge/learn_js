@@ -8,9 +8,17 @@
     </head>
     <body>
         <div id="parent">
-            <div>我是父组件，传入props参数给子组件显示 {{msg2}}</div>
-            <!--https://blog.csdn.net/qq_40713392/article/details/84900303-->
-
+            <h2>vue子组件和父组件事件处理</h2>
+            <p>对于vue子组件来说，由于默认html是可以处理事件的，但抽象到组件之后被调用无法方便使用事件，</p>
+            <p>一般是在子组件当中使用标准事件触发一个事件，该事件使用$emit定义一个父组件调用事件的名称，形如$emt('parent-event',msg)</p>
+            <p>在这种emit的形式当中，parent-event可以在父亲组件当中使用v-on:parent-event="finnally-event"形式调用，至此，父子组件的关系被连接</p>
+            <p>同时，如果需要向父组件返回一个只值，则在emit的时候只需要传递第二个值，在父组件当中，finnaly-event(msg)中的参数会接收这个值</p>
+            <p>需要注意的是，父子组件当中事件名称需要使用连接符命名，即类似child-event这样，而事件的执行函数，即双引号内的内容不受影响</p>
+            <div>我是父组件，接收子组件向上传递的事件参数 {{msg2}}</div>
+            <transmit-child 
+                :child-msg="msg" 
+                @click-msg="exportMsg"
+            ></transmit-child>
         </div>
     </body>
     <script charset="utf-8">
@@ -41,13 +49,13 @@
             data: {
                 arr: [1,2,3,4],
                 msg: '我是父组件',
-                msg2: ''
+                msg2: '初始化值'
             },
-            component: {
-                'transmit-child':ComponentChild
+            components: {
+                'transmit-child': ComponentChild
             },
             methods: {
-                exportMsg: function(childVal){
+                exportMsg (childVal){
                     console.log('父组件')
                     this.msg2 = childVal
                 }
