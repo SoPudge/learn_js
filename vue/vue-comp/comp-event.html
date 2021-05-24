@@ -19,6 +19,12 @@
                 :child-msg="msg" 
                 @click-msg="exportMsg"
             ></transmit-child>
+            <h2>将原生事件绑定到组件</h2>
+            <p>默认在组件中使用原始node的事件是无法成功的，会被认定为自定义事件，即使使用原生事件一样的名称，如下自定义按钮的组件btn，虽然button含有click方法，但是自定义组件所有的方法都需要自定义</p>
+            <p>即必须通过emit预先定义事件</p>
+            <btn @click="handleClick"></btn>
+            <p>可以使用.native来直接使用组件的原生事件，但是native修饰符只会使用template当中根元素的原生事件，所以如果需要使用事件的元素被其他元素包裹，这个办法就失效了</p>
+            <btn @click.native="handleClickOrigin"></btn>
         </div>
     </body>
     <script charset="utf-8">
@@ -43,6 +49,17 @@
                 </div>
             `
         }
+
+        let ComponentB = {
+            template: `
+                <button @click="transmit">按钮</button>
+            `,
+            methods: {
+                transmit: function(){
+                    this.$emit('click','子组件触发')
+                }
+            }
+        }
         
         new Vue({
             el: '#parent',
@@ -52,13 +69,22 @@
                 msg2: '初始化值'
             },
             components: {
-                'transmit-child': ComponentChild
+                'transmit-child': ComponentChild,
+                'btn': ComponentB
             },
             methods: {
                 exportMsg (childVal){
                     console.log('父组件')
                     this.msg2 = childVal
-                }
+                },
+                handleClick (option){
+                    console.log(option)
+                    alert(option)
+                },
+                handleClickOrigin (){
+                    alert('直接触发')
+                },
+
             }
         })
     </script>

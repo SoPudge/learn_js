@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>VUE组件中model详解</title>
+    </head>
+    <body>
+        <div id="model-example">
+            <h2>标准V-MODEL绑定使用-input</h2>
+            <input type="text" v-model="message"/>
+            <p>输入内容：{{message}}</p>
+            <h2>标准V-MODEL绑定使用-input radio</h2>
+            <input type="radio" v-model="message2" value='one'/>
+            <label>one</label>
+            <p>Value is {{message2}}</p>
+            <h2>v-model原始使用</h2>
+            <p>v-model实际是在input标签当中绑定其value值的变化到变量message，同时在执行input事件的时候将变量message=$event.target.value，即达成一旦出发input事件</p>
+            <p>则message的值随着事件的$evet.target.value值改变，同时显示</p>
+            <input type="text" :value="message3" @input="message3=$event.target.value"/>
+            <p>输入内容：{{message3}}</p>
+            <h2>组件当中自定义v-model监听事件</h2>
+            <p>一般来说v-model绑定输入表单当中的value值，如对于input绑定输入值，对于input radio绑定选择值，对于input checkbox绑定多个选择值数组</p>
+            <p>如果需要将v-model自定义为绑定input radio的选择与否，如选择了为true，未选择为false，则需要自定义v-model绑定的值和事件</p>
+            <zinput v-model="message4"></zinput>
+            <p>is checked: {{message4}}</p>
+        </div>
+    </body>
+    <script charset="utf-8">
+        let zinput = {
+            model: {
+                prop: 'checked',
+                event: 'change'
+            },
+            props: {
+                checked: Boolean
+            },
+            template: `
+                <input
+                    type="checkbox" 
+                    :checked="checked" 
+                    @change="$emit('change',$event.target.checked)"
+                >
+            `
+        }
+        new Vue({
+            el: "#model-example",
+            components: {
+                'zinput': zinput
+            },
+            data: {
+                message: '',
+                message2: '',
+                message3: '',
+                message4: '',
+            }
+        })
+    </script>
+</html>
