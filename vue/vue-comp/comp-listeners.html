@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue中$attrs和$listeners说明</title>
+</head>
+
+<body>
+    <div id="father">
+        nihao
+        <p>{{name}}</p>
+        <!--<child :name="name" :age="age" :infoObj="infoObj" @updateInfo="updateInfo" @delInfo="delInfo" />-->
+    </div>
+</body>
+<script charset="utf-8">
+    let child = {
+        props: ['name'],
+        data: function () {
+            return {
+                height: '180cm',
+                weight: '70kg'
+            }
+        },
+        template: `
+                <grand-son :height="height" :weight="weight" @addInfo="addInfo" v-bind="$attrs" v-on="$listeners"></grand-son>
+            `,
+        components: {
+            'grand-son': GrandSon
+        },
+        mounted: function () {
+            console.log(this.$attrs)
+            console.log(this.$listeners)
+        },
+        methods: {
+            addInfo: function () {
+                console.log('add info')
+            }
+        }
+    }
+
+    let GrandSon = {
+        props: ['height'],
+        template: `
+                <div>
+                    <div>
+                        <p>姓名：{{name}}</p>
+                        <p>年龄：{{age}}</p>
+                        <p>身高：{{height}}</p>
+                        <p>体重：{{weight}}</p>
+                        <p>来自：{{from}}</p>
+                        <p>职位：{{job}}</p>
+                        <p>爱好：{{hobby}}</p>
+                    </div>
+                </div>
+            `,
+        data: function () {
+            return {
+                name: null,
+                age: null,
+                high: null,
+                weight: null,
+                from: null,
+                job: null,
+                hobby: null,
+            }
+        },
+        mounted: function () {
+            this.name = this.$attrs.name
+            this.age = this.$attrs.age
+            this.high = this.$attrs.height
+            this.weight = this.$attrs.weight
+            this.from = this.$attrs.infoObj.from
+            this.job = this.$attrs.infoObj.job
+            this.hobby = this.$attrs.infoObj.hobby
+            console.log('属性', this.$attrs)
+            console.log('事件', this.$listeners)
+            this.$emit('updateInfo')
+            this.$emit('delInfo')
+            this.$emit('addInfo')
+        }
+    }
+
+    new Vue({
+        el: '#father',
+        data: {
+            name: 'Lily',
+            age: 22,
+            infoObj: {
+                from: 'Shanghai',
+                job: 'policeman',
+                hobby: ['reading', 'writing', 'skating']
+            }
+        },
+        components: {
+            'child': child
+        },
+        methods: {
+            updateInfo() {
+                console.log('update info')
+            },
+            delInfo() {
+                console.log('delete info')
+            }
+        }
+    })
+</script>
+
+</html>
