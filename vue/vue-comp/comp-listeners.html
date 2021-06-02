@@ -10,36 +10,10 @@
 
 <body>
     <div id="father">
-        nihao
-        <p>{{name}}</p>
-        <!--<child :name="name" :age="age" :infoObj="infoObj" @updateInfo="updateInfo" @delInfo="delInfo" />-->
+        <child :name="name" :age="age" :infoObj="infoObj" @updateInfo="updateInfo" @delInfo="delInfo" />
     </div>
 </body>
 <script charset="utf-8">
-    let child = {
-        props: ['name'],
-        data: function () {
-            return {
-                height: '180cm',
-                weight: '70kg'
-            }
-        },
-        template: `
-                <grand-son :height="height" :weight="weight" @addInfo="addInfo" v-bind="$attrs" v-on="$listeners"></grand-son>
-            `,
-        components: {
-            'grand-son': GrandSon
-        },
-        mounted: function () {
-            console.log(this.$attrs)
-            console.log(this.$listeners)
-        },
-        methods: {
-            addInfo: function () {
-                console.log('add info')
-            }
-        }
-    }
 
     let GrandSon = {
         props: ['height'],
@@ -80,6 +54,31 @@
             this.$emit('updateInfo')
             this.$emit('delInfo')
             this.$emit('addInfo')
+        }
+    }
+
+    let child = {
+        props: ['name'],
+        data: function () {
+            return {
+                height: '180cm',
+                weight: '70kg'
+            }
+        },
+        template: `
+                <grand-son :height="height" :weight="weight" @addInfo="addInfo" v-bind="$attrs" v-on="$listeners"></grand-son>
+            `,
+        components: {
+            'grand-son': GrandSon
+        },
+        mounted: function () {
+            console.log(this.$attrs)
+            console.log(this.$listeners)
+        },
+        methods: {
+            addInfo: function () {
+                console.log('add info')
+            }
         }
     }
 
