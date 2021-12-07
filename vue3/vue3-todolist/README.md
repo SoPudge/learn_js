@@ -6,3 +6,6 @@
 ## Step1. 简单vue3应用
 仅使用vue3引入js的方式完成基本功能，不包含css，只包含逻辑和功能
 - [ ] 对于todo list的增删改查
+- [ ] 页首包含todo list的输入框
+- [ ] 页中包含当前的todo list
+- [ ] 页尾包含todo list的操作按钮，全选，删除等
