@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>ToDo List</title>
+        <script src="https://unpkg.com/vue@next"></script>
     </head>
     <body>
         <div id="todo">
@@ -13,11 +14,15 @@
                 <input v-model="message"/>
             </div>
             <div id="todo-content">
-                <input type="checkbox" name="" id="">
-                <label>{{message}}</label>
+                <ul style="list-style-type:none">
+                    <todo-item
+                        v-for="(todo, index) in todos"
+                        :key="todo.id"
+                        :title="todo.title"
+                    ></todo-item>
+                </ul>
             </div>
         </div>
     </body>
-    <script src="https://unpkg.com/vue@next"></script>
     <script src="script.js"></script>
     </html>
