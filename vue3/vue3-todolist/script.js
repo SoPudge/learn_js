@@ -18,6 +18,15 @@ const app = Vue.createApp({
                 }
             ],
         }
+    },
+    methods: {
+        addtodo() {
+            //回车添加元素
+            this.todos.push({
+                id:this.todos.length + 1,
+                title:this.message
+            })
+        },
     }
 })
 

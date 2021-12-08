@@ -11,7 +11,7 @@
             <h3>to do list</h3>
             <div id="todo-header">
                 输入todo事项：
-                <input v-model="message"/>
+                <input v-model="message" @keyup.enter="addtodo"/>
             </div>
             <div id="todo-content">
                 <ul style="list-style-type:none">
